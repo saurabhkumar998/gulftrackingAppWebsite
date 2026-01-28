@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GULFTRACKING - Asset Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .monitor-frame {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 12px solid #1e293b;
+            border-radius: 8px;
+            border-bottom-width: 24px;
+            position: relative;
+            background: white;
+            overflow: hidden;
+        }
+
+        .monitor-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: #cbd5e1;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            z-index: 10;
+        }
+
+        .monitor-stand {
+            width: 140px;
+            height: 60px;
+            background: #e2e8f0;
+            margin: 0 auto;
+            position: relative;
+            z-index: 0;
+        }
+        
+        .monitor-base {
+            width: 240px;
+            height: 12px;
+            background: #cbd5e1;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .wave-bg {
+            background: linear-gradient(180deg, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .map-pattern {
+            background-color: #e5e7eb;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239ca3af' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .phone-mockup {
+            border: 10px solid #1f2937;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 20px;
+            background: #1f2937;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            z-index: 20;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #0f766e, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <div class="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-location-arrow"></i>
+                        </div>
+                        <span class="font-bold text-2xl tracking-tight text-gray-900">GULFTRACKING</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#assets" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Assets</a>
+                    <a href="#tracking" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Tracking</a>
+                    <a href="#features" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Features</a>
+                </div>
+                <div>
+                    <span class="text-teal-700 font-bold"><i class="fas fa-phone-alt mr-2"></i>+91 8084718420</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page 1: Hero & Asset List -->
+    <section id="assets" class="pt-16 pb-20 bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5 lg:text-left z-10 relative">
+                    <p class="text-sm font-semibold text-teal-600 tracking-wide uppercase">www.gulftracking.sa</p>
+                    <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        ASSET <span class="gradient-text">MANAGEMENT</span> SYSTEM
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-500">
+                        Complete visibility and control over your generators, vehicles, and heavy equipment. Track utilization, running hours, and location in real-time.
+                    </p>
+                    <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                        <button class="bg-black text-white px-6 py-2 rounded-lg flex items-center gap-3 hover:bg-gray-800 transition">
+                            <i class="fab fa-apple text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] leading-none">Download on the</div>
+                                <div class="text-sm font-bold leading-none mt-1">App Store</div>
+                            </div>
+                        </button>
+                        <button class="bg-black text-white px-6 py-2 rounded-lg flex items-center gap-3 hover:bg-gray-800 transition">
+                            <i class="fab fa-google-play text-2xl"></i>
+                            <div class="text-left">
+                                <div class="text-[10px] leading-none">GET IT ON</div>
+                                <div class="text-sm font-bold leading-none mt-1">Google Play</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-7 lg:flex lg:items-center">
+                    <!-- App Interface Mockup -->
+                    <div class="relative mx-auto w-full rounded-lg shadow-2xl lg:max-w-md bg-white overflow-hidden border border-gray-100 z-10 transform transition-transform hover:-translate-y-1 duration-300">
+                        <div class="bg-teal-600 p-6 text-white">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <div class="text-4xl font-bold">98763</div>
+                                    <div class="text-sm opacity-80">Total Assets</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-2xl font-bold">58694</div>
+                                    <div class="text-sm opacity-80">Ignition ON</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-gray-50">
+                            <div class="space-y-3">
+                                <!-- Asset Item 1 -->
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center border-l-4 border-green-500">
+                                    <div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center mr-4 text-gray-500">
+                                        <!-- Custom Generator Icon -->
+                                        <svg class="w-8 h-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16M4 8a2 2 0 00-2 2v4a2 2 0 002 2M20 8a2 2 0 012 2v4a2 2 0 01-2 2m-14 0v2a1 1 0 001 1h2a1 1 0 001-1v-2m8 0v2a1 1 0 001 1h2a1 1 0 001-1v-2M8 12h8" />
+                                            <rect x="6" y="6" width="12" height="10" rx="1" stroke-width="1.5" />
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-gray-900">Honda EU30 Generator</h3>
+                                        <p class="text-xs text-gray-500">TY560820</p>
+                                    </div>
+                                    <span class="text-green-600 text-xs font-bold bg-green-100 px-2 py-1 rounded">Active</span>
+                                </div>
+                                <!-- Asset Item 2 -->
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center border-l-4 border-yellow-500">
+                                    <div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center mr-4 text-gray-500">
+                                        <!-- Custom Inverter Icon -->
+                                        <svg class="w-8 h-8 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="1.5" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 9l4 6m-4 0l4-6" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 16h6" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 8h6" />
+                                            <circle cx="12" cy="12" r="6" stroke-width="1.5" class="opacity-30"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-gray-900">Inverter IN568</h3>
+                                        <p class="text-xs text-gray-500">TY56B822</p>
+                                    </div>
+                                    <span class="text-yellow-600 text-xs font-bold bg-yellow-100 px-2 py-1 rounded">Idle</span>
+                                </div>
+                                <!-- Asset Item 3 -->
+                                <div class="bg-white p-4 rounded-lg shadow-sm flex items-center border-l-4 border-red-500">
+                                    <div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center mr-4 text-gray-500">
+                                        <i class="fas fa-snowflake text-2xl"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-bold text-gray-900">Bajaj DC 2016 Glacier</h3>
+                                        <p class="text-xs text-gray-500">TY568655</p>
+                                    </div>
+                                    <span class="text-red-600 text-xs font-bold bg-red-100 px-2 py-1 rounded">Offline</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 2: Desktop Dashboard View -->
+    <section class="py-16 relative overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Background" class="w-full h-full object-cover">
+            <!-- Changed opacity from /90 to /75 for brighter background -->
+            <div class="absolute inset-0 bg-gray-900/75"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-white">Real-Time Desktop Monitoring</h2>
+                <p class="mt-2 text-gray-300">Comprehensive dashboard for fleet managers.</p>
+            </div>
+
+            <!-- Monitor CSS Mockup -->
+            <div class="monitor-frame h-[500px] w-full max-w-5xl mx-auto">
+                <!-- Dashboard Header -->
+                <div class="h-12 border-b flex items-center px-4 bg-white justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-teal-700">GULFTRACKING</span>
+                        <div class="text-xs text-gray-400">|</div>
+                        <div class="text-xs font-medium text-gray-600">Total Assets: 1000</div>
+                        <div class="text-xs font-medium text-green-600">In Use: 518</div>
+                    </div>
+                    <div class="flex gap-3 text-gray-400">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+
+                <!-- Dashboard Body -->
+                <div class="flex h-full">
+                    <!-- Sidebar/List -->
+                    <div class="w-1/4 border-r bg-white p-2 hidden md:block overflow-y-auto">
+                        <div class="bg-gray-100 p-2 rounded mb-2 text-sm font-bold text-gray-700">Equipment List</div>
+                        <div class="space-y-2">
+                            <div class="p-2 bg-blue-50 border border-blue-200 rounded text-xs">
+                                <div class="font-bold">Honda EU30 Generator</div>
+                                <div class="text-gray-500">TY569820</div>
+                            </div>
+                            <div class="p-2 hover:bg-gray-50 rounded text-xs border border-transparent">
+                                <div class="font-bold text-gray-700">Cat Bulldozer D6</div>
+                                <div class="text-gray-500">EQ-2021-55</div>
+                            </div>
+                            <div class="p-2 hover:bg-gray-50 rounded text-xs border border-transparent">
+                                <div class="font-bold text-gray-700">Komatsu Excavator</div>
+                                <div class="text-gray-500">EQ-2022-89</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Area with Live Embed -->
+                    <div class="flex-1 bg-gray-100 relative overflow-hidden">
+                        <!-- OpenStreetMap Embed -->
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-77.050,38.890,-77.020,38.910&amp;layer=mapnik" 
+                            class="absolute inset-0 w-full h-full grayscale-[30%] opacity-90"
+                        ></iframe>
+                        <!-- Inner Shadow/Overlay for Depth -->
+                        <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.1)]"></div>
+
+                        <!-- Asset Card Popup (Floating) -->
+                        <div class="absolute top-8 right-8 bg-slate-700 text-white rounded-lg shadow-xl p-4 w-80 z-20">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg">Honda EU30 Generator</h3>
+                                <i class="fas fa-times cursor-pointer text-gray-400"></i>
+                            </div>
+                            <p class="text-gray-300 text-sm mb-3">TY569820</p>
+                            
+                            <div class="flex gap-3 mb-4">
+                                <!-- Replaced Broken Image with Custom SVG Illustration -->
+                                <div class="w-20 h-20 bg-white rounded-md flex items-center justify-center overflow-hidden relative">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                        <!-- Wheels -->
+                                        <circle cx="25" cy="85" r="6" fill="#1f2937" />
+                                        <circle cx="75" cy="85" r="6" fill="#1f2937" />
+                                        
+                                        <!-- Main Body Frame (Grey) -->
+                                        <path d="M15 25 Q15 20 20 20 L80 20 Q85 20 85 25 L85 80 Q85 85 80 85 L20 85 Q15 85 15 80 Z" fill="#4b5563" />
+                                        
+                                        <!-- Red Center Panel -->
+                                        <rect x="25" y="25" width="50" height="55" rx="2" fill="#dc2626" />
+                                        
+                                        <!-- Control Panel Area -->
+                                        <rect x="55" y="30" width="15" height="20" fill="#1f2937" rx="1" />
+                                        <circle cx="62.5" cy="35" r="2" fill="#ef4444" />
+                                        
+                                        <!-- Handle -->
+                                        <path d="M20 20 L20 15 Q20 10 25 10 L75 10 Q80 10 80 15 L80 20" stroke="#9ca3af" stroke-width="3" fill="none" />
+                                        
+                                        <!-- Branding Hint -->
+                                        <rect x="30" y="60" width="20" height="4" fill="#ef4444" opacity="0.5"/>
+                                        
+                                        <!-- Highlights -->
+                                        <path d="M25 25 L75 25" stroke="white" stroke-opacity="0.2" stroke-width="1"/>
+                                    </svg>
+                                </div>
+                                <div class="text-sm space-y-1">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                        <span>Lat & Long: 38.8951, 77.0364</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user text-gray-400"></i>
+                                        <span>Assigned to: <strong>David Richard</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Graph Area -->
+                            <div class="bg-slate-800 rounded p-3">
+                                <div class="flex justify-between text-xs text-gray-400 mb-2">
+                                    <span>Working Time</span>
+                                    <span>Week <i class="fas fa-caret-down"></i></span>
+                                </div>
+                                <!-- CSS Wave Graph Mockup -->
+                                <div class="h-24 relative flex items-end gap-1">
+                                     <!-- Y-Axis -->
+                                     <div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[8px] text-gray-500 w-6">
+                                        <span>24hr</span>
+                                        <span>12hr</span>
+                                        <span>4hr</span>
+                                     </div>
+                                     <!-- Graph -->
+                                     <svg viewBox="0 0 100 40" class="w-full h-full pl-6" preserveAspectRatio="none">
+                                        <path d="M0,40 Q10,30 20,35 T40,20 T70,10 T100,25 V40 H0 Z" fill="rgba(59, 130, 246, 0.5)" stroke="#3b82f6" stroke-width="1" />
+                                     </svg>
+                                </div>
+                                <div class="flex justify-between text-[8px] text-gray-500 pl-6 mt-1">
+                                    <span>05th</span>
+                                    <span>07th</span>
+                                    <span>09th</span>
+                                    <span>11th</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Pin -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                            <div class="w-4 h-4 bg-red-500 rounded-full animate-ping absolute"></div>
+                            <div class="w-4 h-4 bg-red-600 rounded-full border-2 border-white relative shadow-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="monitor-stand"></div>
+        </div>
+    </section>
+
+    <!-- Page 3: Intelligent Tracking & Alerts -->
+    <section id="tracking" class="py-20 relative overflow-hidden">
+        <!-- Background Image with White Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1700318131252-ab19c871ab60?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Construction Site" class="w-full h-full object-cover">
+            <!-- Changed opacity from /90 to /80 to show more image detail -->
+            <div class="absolute inset-0 bg-white/80"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Left Column -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">
+                        THE INTELLIGENT VEHICLE<br>
+                        <span class="text-teal-600">TRACKING SOLUTION</span>
+                    </h2>
+                    
+                    <ul class="space-y-3 mb-10">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Ensure driver & fleet safety</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Capture rich data on fleet management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Complete vehicle diagnosis data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Maximize operational efficiency</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600">Build to cut fleet operational costs</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="font-bold text-xl text-gray-900 mb-6 border-b pb-2">CRITICAL ALERTS</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
+                            <i class="fas fa-car-battery text-red-500 text-xl"></i>
+                            <span class="text-sm font-medium">Battery Disconnect</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
+                            <i class="fas fa-tachometer-alt text-orange-500 text-xl"></i>
+                            <span class="text-sm font-medium">Over Speeding</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                            <i class="fas fa-clock text-yellow-500 text-xl"></i>
+                            <span class="text-sm font-medium">Continuous Idling</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                            <i class="fas fa-exclamation-triangle text-purple-500 text-xl"></i>
+                            <span class="text-sm font-medium">Rash Driving</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                            <i class="fas fa-gas-pump text-blue-500 text-xl"></i>
+                            <span class="text-sm font-medium">Fuel Sensor Issue</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                            <i class="fas fa-car-crash text-gray-600 text-xl"></i>
+                            <span class="text-sm font-medium">Accident Alerts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Weight Sensor & Truck -->
+                <div class="bg-gray-50 rounded-2xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 bg-teal-600 text-white rounded-bl-2xl font-bold text-sm">
+                        PTA APPROVED
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">WEIGHT SENSOR INTEGRATION</h3>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Precision</h4>
+                            <p class="text-sm text-gray-600">High accuracy, repeatability, and stability with real-time readings.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Capability</h4>
+                            <p class="text-sm text-gray-600">Measure gross weight & payload for multiple axle readings.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Cost Saving</h4>
+                            <p class="text-sm text-gray-600">Avoid fines and unnecessary stoppages.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-2">Installation</h4>
+                            <p class="text-sm text-gray-600">Flexible for air, mechanical & mixed suspensions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Truck Visual Representation -->
+                    <div class="bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center p-1">
+                                <!-- Custom Truck Icon -->
+                                <svg class="w-full h-full text-red-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 18h2.38c.4 1.74 1.95 3 3.77 3s3.37-1.26 3.77-3h4.15c.4 1.74 1.95 3 3.77 3s3.37-1.26 3.77-3H23v-5c0-1.79-1.19-3.34-2.91-3.82l-2.67-4C17.02 4.43 16.27 4 15.42 4H13V3H1v15zm17.85-2c-.75 0-1.35-.6-1.35-1.35s.6-1.35 1.35-1.35 1.35.6 1.35 1.35-.6 1.35-1.35 1.35zM5 16H3V5h8v4h-2v2h2v5h-2.15c-.4-1.74-1.95-3-3.77-3s-3.37 1.26-3.77 3H5v-2zm2.15 1.35c.75 0 1.35.6 1.35 1.35s-.6 1.35-1.35 1.35-1.35-.6-1.35-1.35.6-1.35 1.35-1.35zM14 6h1.42l2.67 4H14V6z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">5568 VDB</div>
+                                <div class="text-xs text-gray-500">Driver: ANAZ RISWAN</div>
+                                <div class="text-xs text-gray-500">Plate #: 5568 VDB</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-sm border-t pt-3">
+                            <div>
+                                <span class="text-gray-500">Speed:</span>
+                                <span class="font-bold text-gray-800">44 Km/hr</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Load:</span>
+                                <span class="font-bold text-teal-600">20975.0</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-xs text-gray-400 flex justify-between">
+                             <span><i class="fab fa-whatsapp text-green-500"></i> Loc sharing available</span>
+                             <span>436383.9 kms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Dustbin / Waste Management -->
+    <section id="waste-mgmt" class="py-20 bg-slate-50 relative border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-left mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900">Smart Waste Management & Dustbin Tracking</h2>
+                <p class="mt-4 text-lg text-gray-500 max-w-3xl">
+                    Transform municipal waste collection with our IoT-powered dustbin tracking. Reduce fuel costs and carbon footprint by only collecting bins when they are full.
+                </p>
+            </div>
+
+            <div class="lg:grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Features Side (Left) -->
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <!-- Feature 1: Fill-Level Sensors (Green) -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition h-full">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-signal text-green-500 text-xl"></i>
+                            <h3 class="font-bold text-gray-900">Fill-Level Sensors</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Ultrasonic sensors provide real-time fill percentage data directly to the dashboard.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: Route Optimization (Blue) -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-md transition h-full">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-route text-blue-500 text-xl"></i>
+                            <h3 class="font-bold text-gray-900">Route Optimization</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            AI-calculated collection routes based only on bins requiring immediate attention.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: Tilt & Fire Alerts (Orange) -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition h-full">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-fire-alt text-orange-500 text-xl"></i>
+                            <h3 class="font-bold text-gray-900">Tilt & Fire Alerts</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Instant SMS/Push notifications if a bin is tipped over or detects abnormal heat levels.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4: Cleanliness Logs (Purple) -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500 hover:shadow-md transition h-full">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-history text-purple-500 text-xl"></i>
+                            <h3 class="font-bold text-gray-900">Cleanliness Logs</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            Verify staff performance with timestamped collection and sanitation logs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Side: Smart Bin Illustration (Right) -->
+                <div class="relative flex justify-center items-center mt-12 lg:mt-0">
+                    <!-- Background Blob -->
+                    <div class="absolute w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+                    
+                    <!-- Smart Bin SVG Illustration -->
+                    <div class="relative w-80 h-96 transform hover:scale-105 transition-transform duration-500">
+                        <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl">
+                             <!-- Bin Body (Dark Grey) -->
+                            <path d="M40 60 L50 220 Q52 230 65 230 L135 230 Q148 230 150 220 L160 60" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+                            
+                            <!-- Bin Rim -->
+                            <path d="M35 60 L165 60 L165 50 L35 50 Z" fill="#475569" stroke="#1e293b" stroke-width="2"/>
+                            
+                            <!-- Lid (Teal - Open slightly) -->
+                            <path d="M30 50 L170 50 L160 30 Q100 20 40 30 Z" fill="#0d9488" stroke="#0f766e" stroke-width="2"/>
+                            
+                            <!-- Sensor Module (On Lid Underside/Top) -->
+                            <rect x="85" y="25" width="30" height="10" rx="2" fill="#0f172a"/>
+                            <circle cx="100" cy="30" r="2" fill="#ef4444" class="animate-ping"/>
+                            
+                            <!-- Ultrasonic Beams (Sensor Waves) -->
+                            <path d="M100 65 L80 150" stroke="#14b8a6" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+                            <path d="M100 65 L120 150" stroke="#14b8a6" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+                            <path d="M100 65 L100 150" stroke="#14b8a6" stroke-width="1" stroke-dasharray="4 4" opacity="0.8"/>
+                            
+                            <!-- Waste Level (Fill) -->
+                            <path d="M52 160 Q100 155 148 160 L145 210 Q100 215 55 210 Z" fill="#fbbf24" opacity="0.8"/>
+                            <text x="100" y="190" text-anchor="middle" fill="#78350f" font-size="12" font-weight="bold">65% FULL</text>
+                            
+                            <!-- Status Indicator Panel on Front -->
+                            <rect x="80" y="80" width="40" height="20" rx="2" fill="#1e293b"/>
+                            <rect x="85" y="88" width="30" height="4" rx="2" fill="#334155"/>
+                            <rect x="85" y="88" width="20" height="4" rx="2" fill="#22c55e"/> <!-- Battery Level -->
+                            
+                            <!-- Wheels -->
+                            <circle cx="50" cy="230" r="12" fill="#0f172a"/>
+                            <circle cx="150" cy="230" r="12" fill="#0f172a"/>
+                        </svg>
+
+                         <!-- Green Badge "SMART WASTE SYSTEM" -->
+                        <div class="absolute top-1/2 -right-8 transform -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
+                            <i class="fas fa-recycle"></i>
+                            <span class="font-bold text-xs tracking-wider">SMART WASTE SYSTEM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4 & 5: AI Analysis & Features -->
+    <section id="features" class="py-20 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                <!-- Phone Mockup Side (Dual Phones - Side by Side) -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                    
+                    <!-- Phone 1: Vehicle Tracking -->
+                    <div class="phone-mockup w-64 h-[520px] shadow-2xl border-gray-800 border-[10px] flex-shrink-0 relative">
+                        <div class="phone-notch"></div>
+                        <div class="bg-white h-full pt-8 px-4 text-gray-800 overflow-y-auto scrollbar-hide">
+                            <!-- App Header -->
+                            <div class="flex items-center justify-between mb-6">
+                                <i class="fas fa-arrow-left text-gray-400"></i>
+                                <span class="font-bold">5568 VDB</span>
+                                <i class="fas fa-ellipsis-v text-gray-400"></i>
+                            </div>
+                            <!-- Mileage Cards -->
+                            <div class="flex gap-2 mb-4">
+                                <div class="bg-orange-50 p-3 rounded-lg flex-1">
+                                    <i class="fas fa-road text-orange-500 mb-2"></i>
+                                    <div class="font-bold text-lg">44,172.5</div>
+                                    <div class="text-[10px] text-gray-500">Odometer</div>
+                                </div>
+                                <div class="bg-blue-50 p-3 rounded-lg flex-1">
+                                    <i class="fas fa-gas-pump text-blue-500 mb-2"></i>
+                                    <div class="font-bold text-lg">00.00</div>
+                                    <div class="text-[10px] text-gray-500">Fuel Cons.</div>
+                                </div>
+                            </div>
+                            <!-- Driver Info -->
+                            <div class="flex items-center gap-3 p-3 border rounded-lg mb-4">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">MA</div>
+                                <div>
+                                    <div class="font-bold text-sm">Mohamed Ali</div>
+                                    <div class="text-[10px] text-gray-500">Driver ID: 45688548</div>
+                                </div>
+                            </div>
+                            <!-- Map placeholder -->
+                            <div class="h-32 bg-gray-200 rounded-lg mb-4 relative map-pattern">
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <i class="fas fa-map-marker-alt text-red-500 text-xl"></i>
+                                </div>
+                            </div>
+                            <!-- Status Icons -->
+                            <div class="flex justify-between px-2">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-1 mx-auto"><i class="fas fa-power-off"></i></div>
+                                    <span class="text-[10px]">Ignition</span>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mb-1 mx-auto"><i class="fas fa-user-slash"></i></div>
+                                    <span class="text-[10px]">Seat Belt</span>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-1 mx-auto"><i class="fas fa-door-open"></i></div>
+                                    <span class="text-[10px]">Door</span>
+                                </div>
+                                <div class="text-center">
+                                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 mb-1 mx-auto"><i class="fas fa-fan"></i></div>
+                                    <span class="text-[10px]">AC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phone 2: Waste Management - Dark Mode -->
+                    <div class="phone-mockup w-64 h-[520px] shadow-2xl border-gray-800 border-[10px] flex-shrink-0 relative">
+                        <div class="phone-notch bg-black"></div>
+                        <div class="bg-gray-900 h-full pt-8 px-3 text-white overflow-y-auto scrollbar-hide">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="bg-blue-600 px-2 py-1 rounded text-[10px] font-bold tracking-widest">GULFTRACKING</div>
+                                <div class="bg-gray-800 p-1.5 rounded"><i class="fas fa-th text-gray-400 text-xs"></i></div>
+                            </div>
+                            
+                            <!-- Top Dashboard -->
+                            <div class="grid grid-cols-2 gap-2 mb-2">
+                                <!-- Gauge -->
+                                <div class="bg-gray-800 p-2 rounded-xl flex flex-col items-center justify-center relative h-24">
+                                     <!-- SVG Donut -->
+                                     <svg viewBox="0 0 36 36" class="w-16 h-16 transform -rotate-90">
+                                        <path stroke="#374151" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path stroke="#10b981" stroke-width="3" stroke-dasharray="75, 100" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path stroke="#f59e0b" stroke-width="3" stroke-dasharray="15, 100" stroke-dashoffset="-75" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path stroke="#ef4444" stroke-width="3" stroke-dasharray="10, 100" stroke-dashoffset="-90" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                     </svg>
+                                     <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                        <span class="text-xl font-bold">18</span>
+                                        <span class="text-[8px] text-gray-400">Total Bins</span>
+                                     </div>
+                                </div>
+                                <!-- Fire Alert -->
+                                <div class="bg-red-900/20 border border-red-900/50 p-2 rounded-xl flex flex-col justify-between h-24">
+                                    <div class="flex items-center justify-between text-red-500 text-xs font-bold">
+                                        <span class="flex items-center gap-1"><i class="fas fa-fire"></i> Fire Alert</span>
+                                        <span>0</span>
+                                    </div>
+                                    <div class="flex-1 flex items-center justify-center">
+                                        <div class="text-center text-xs text-gray-500">No Alerts</div>
+                                    </div>
+                                    <div class="flex justify-end text-red-900"><i class="fas fa-chevron-right text-[10px]"></i></div>
+                                </div>
+                            </div>
+
+                            <!-- Bin Counts -->
+                            <div class="grid grid-cols-2 gap-2 mb-2">
+                                 <div class="bg-gray-800 p-3 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <div class="text-lg font-bold">0</div>
+                                        <div class="text-[10px] text-gray-400">Bins</div>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center"><i class="fas fa-trash text-blue-400"></i></div>
+                                 </div>
+                                 <div class="bg-gray-800 p-3 rounded-xl flex justify-between items-center relative overflow-hidden">
+                                    <div class="absolute top-1 right-2 text-blue-500 text-[8px]"><i class="fas fa-check-circle"></i></div>
+                                    <div>
+                                        <div class="text-lg font-bold">18</div>
+                                        <div class="text-[10px] text-gray-400">Smart Bins</div>
+                                    </div>
+                                    <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center"><i class="fas fa-wifi text-blue-400"></i></div>
+                                 </div>
+                            </div>
+
+                            <!-- Stats Rows -->
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <div class="bg-gray-800 p-2 rounded-xl flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-red-500/10 flex-shrink-0 flex items-center justify-center text-red-500 text-xs"><i class="fas fa-trash"></i></div>
+                                    <div>
+                                        <div class="font-bold text-sm">04</div>
+                                        <div class="text-[8px] text-gray-400 leading-tight">Above 75% Filled</div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800 p-2 rounded-xl flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-green-500/10 flex-shrink-0 flex items-center justify-center text-green-500 text-xs"><i class="fas fa-trash"></i></div>
+                                    <div>
+                                        <div class="font-bold text-sm">12</div>
+                                        <div class="text-[8px] text-gray-400 leading-tight">Below 50% Filled</div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800 p-2 rounded-xl flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-yellow-500/10 flex-shrink-0 flex items-center justify-center text-yellow-500 text-xs"><i class="fas fa-trash"></i></div>
+                                    <div>
+                                        <div class="font-bold text-sm">02</div>
+                                        <div class="text-[8px] text-gray-400 leading-tight">50% - 75% Filled</div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800 p-2 rounded-xl flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-gray-700 flex-shrink-0 flex items-center justify-center text-gray-400 text-xs"><i class="fas fa-trash"></i></div>
+                                    <div>
+                                        <div class="font-bold text-sm">0</div>
+                                        <div class="text-[8px] text-gray-400 leading-tight">Not available</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom List Stub -->
+                             <div class="border-t border-gray-800 pt-3">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-bold">Bins and Smart Bins</span>
+                                    <button class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] px-3 py-1.5 rounded-lg flex items-center gap-1"><i class="fas fa-plus"></i> Add New Bin</button>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="bg-gray-800 p-2 rounded-lg flex justify-between items-center border border-gray-700">
+                                         <div class="flex items-center gap-3">
+                                             <div class="w-8 h-8 rounded bg-gray-700"></div>
+                                             <div>
+                                                 <div class="text-[10px] font-mono text-gray-300">1028020210</div>
+                                                 <div class="text-[8px] text-gray-500">Large Blue Metal</div>
+                                             </div>
+                                         </div>
+                                         <div class="w-7 h-7 bg-red-500/20 rounded-full flex items-center justify-center text-red-500 relative animate-pulse">
+                                            <i class="fas fa-bell text-xs"></i>
+                                            <div class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-gray-800"></div>
+                                         </div>
+                                    </div>
+                                     <div class="bg-gray-800 p-2 rounded-lg flex justify-between items-center border border-gray-700 opacity-60">
+                                         <div class="flex items-center gap-3">
+                                             <div class="w-8 h-8 rounded bg-gray-700"></div>
+                                             <div>
+                                                 <div class="text-[10px] font-mono text-gray-300">1028020211</div>
+                                                 <div class="text-[8px] text-gray-500">Large Blue Metal</div>
+                                             </div>
+                                         </div>
+                                         <div class="w-7 h-7 bg-gray-700 rounded-full flex items-center justify-center text-gray-500">
+                                            <i class="fas fa-bell-slash text-xs"></i>
+                                         </div>
+                                    </div>
+                                </div>
+                             </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Features Content -->
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-4">AI POWERED<br><span class="text-teal-400">PREDICTIVE ANALYSIS</span></h2>
+                    <p class="text-gray-400 mb-8">
+                        The AI usage will help to analyse the different attributes recorded using various devices for productive predictions to run the system seamlessly.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="flex gap-3">
+                            <i class="fas fa-wrench text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Service maintenance cost prediction</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-users text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Effective work distribution</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-route text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Track trip count & driver efficiency</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-star text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Driver improvement score</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-leaf text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Fuel efficiency vehicle scoring</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <i class="fas fa-clipboard-check text-teal-400 mt-1"></i>
+                            <span class="text-sm text-gray-300">Dispatching efficiency appraisal</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-10 border-t border-slate-700">
+                        <h3 class="font-bold text-xl mb-6">CORE PRODUCT FEATURES</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-2 text-sm text-gray-400">
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Predictive Analysis</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Live GPS Tracking</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Multi-vehicle Map</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Landmarks & Delivery</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Locations on Map</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Live Weight Sensors</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Telemetry Alerts</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Service & Maint.</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Real-time Fuel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asset Management System Grid (Page 5) -->
+            <div class="bg-slate-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                
+                <!-- "Nano Banana" Style Generated Assets -->
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 mb-16 opacity-90">
+                    <!-- 3D Truck Illustration -->
+                    <div class="relative w-64 h-40 hover:scale-105 transition-transform duration-500 group">
+                        <svg viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl filter drop-shadow-[0_20px_13px_rgba(0,0,0,0.5)]">
+                             <!-- Trailer -->
+                            <rect x="40" y="30" width="140" height="90" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+                            <rect x="40" y="100" width="140" height="20" fill="#e2e8f0"/>
+                            <!-- Red Stripes -->
+                            <path d="M40 50 L180 50 L180 65 L40 65 Z" fill="#dc2626"/>
+                            <!-- Cabin -->
+                            <path d="M180 60 L220 60 L220 120 L180 120 Z" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+                            <path d="M180 60 L205 60 L220 75 L220 120 L180 120" fill="#dc2626"/>
+                            <!-- Window -->
+                            <path d="M185 65 L205 65 L215 80 L185 80 Z" fill="#1e293b"/>
+                            <!-- Wheels -->
+                            <circle cx="70" cy="130" r="14" fill="#1f2937" stroke="#374151" stroke-width="4"/>
+                            <circle cx="100" cy="130" r="14" fill="#1f2937" stroke="#374151" stroke-width="4"/>
+                            <circle cx="200" cy="130" r="14" fill="#1f2937" stroke="#374151" stroke-width="4"/>
+                            <!-- Hubs -->
+                            <circle cx="70" cy="130" r="5" fill="#94a3b8"/>
+                            <circle cx="100" cy="130" r="5" fill="#94a3b8"/>
+                            <circle cx="200" cy="130" r="5" fill="#94a3b8"/>
+                        </svg>
+                    </div>
+
+                    <!-- 3D Inverter Illustration -->
+                    <div class="relative w-48 h-40 hover:scale-105 transition-transform duration-500">
+                         <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl filter drop-shadow-[0_20px_13px_rgba(0,0,0,0.5)]">
+                            <!-- Frame -->
+                            <rect x="40" y="40" width="120" height="90" rx="8" fill="#374151" stroke="#1f2937" stroke-width="4"/>
+                            <!-- Front Panel (Red) -->
+                            <rect x="55" y="40" width="90" height="90" fill="#ef4444"/>
+                            <!-- Handle -->
+                            <path d="M50 40 L50 25 Q100 10 150 25 L150 40" stroke="#9ca3af" stroke-width="8" stroke-linecap="round"/>
+                            <!-- Interface -->
+                            <rect x="70" y="60" width="60" height="30" fill="#1f2937" rx="2"/>
+                            <rect x="75" y="65" width="50" height="20" fill="#10b981" class="animate-pulse"/>
+                            <circle cx="100" cy="105" r="8" fill="#1f2937" stroke="#111827" stroke-width="2"/>
+                            <!-- Wheels -->
+                            <circle cx="50" cy="130" r="10" fill="#111827"/>
+                            <circle cx="150" cy="130" r="10" fill="#111827"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-extrabold text-center mb-12">ASSET MANAGEMENT SYSTEM</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Live Location</h3>
+                        <p class="text-gray-400 text-sm">Real time location tracking and automatic alerts if the asset crosses the virtually pre-defined set limit.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Service Alert</h3>
+                        <p class="text-gray-400 text-sm">Streamline maintenance tasks using automated alerts based on running hours or mileage.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-red-500/20 text-red-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Remote Immobilization</h3>
+                        <p class="text-gray-400 text-sm">Remotely immobilize your asset from anywhere, anytime to prevent unauthorized usage.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Controlled Access</h3>
+                        <p class="text-gray-400 text-sm">Role based access control on the dashboard ensures data security and operational hierarchy.</p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Asset Work Time Log</h3>
+                        <p class="text-gray-400 text-sm">Maximize ROI by improving asset visibility and thereby improving operations and billing accuracy.</p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                        <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Security</h3>
+                        <p class="text-gray-400 text-sm">Improve the chain of custody and reduce the instance of theft or stolen assets with instant alerts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-12 pb-8 border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Footer Section -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-location-arrow text-lg"></i>
+                    </div>
+                    <span class="font-bold text-2xl text-gray-900 tracking-tight">GULFTRACKING</span>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <a href="https://www.gulftracking.sa" class="block text-teal-600 font-bold hover:underline mb-1 text-lg">www.gulftracking.sa</a>
+                    <div class="text-gray-500 font-medium"><i class="fas fa-phone-alt mr-2 text-teal-600"></i>+91 8084718420</div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 my-8"></div>
+
+            <!-- Bottom Footer Section -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Bottom Left: Social Icons -->
+                <div class="flex gap-4 order-2 md:order-1">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-teal-600 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-teal-600 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-teal-600 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+
+                <!-- Center: Copyright -->
+                <div class="text-xs text-gray-400 order-3 md:order-2">
+                    &copy; 2026 GulfTracking. All rights reserved.
+                </div>
+
+                <!-- Bottom Right: Email -->
+                <div class="flex items-center gap-3 text-sm font-medium text-gray-600 order-1 md:order-3">
+                    <div class="w-8 h-8 bg-teal-50 rounded-full flex items-center justify-center text-teal-600">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:info@gulftracking.sa" class="hover:text-teal-600 transition">info@gulftracking.sa</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
