@@ -4,6 +4,7 @@ const translations = {
         "nav.tracking": "Tracking",
         "nav.features": "Features",
         "nav.contact_name": "Abu Nawaf",
+        "company.name": "GULFTRACKING",
         "hero.subtitle": "www.gulf-tracking.com",
         "hero.title_part1": "ASSET",
         "hero.title_part2": "MANAGEMENT",
@@ -105,6 +106,7 @@ const translations = {
         "nav.tracking": "التتبع",
         "nav.features": "المميزات",
         "nav.contact_name": "أبو نواف",
+        "company.name": "جلف تراكينج",
         "hero.subtitle": "www.gulf-tracking.com",
         "hero.title_part1": "نظام",
         "hero.title_part2": "إدارة",
@@ -199,6 +201,6 @@ const translations = {
         "asset_mgmt.feature5.desc": "حقق أقصى قدر من العائد على الاستثمار من خلال تحسين رؤية الأصول وبالتالي تحسين العمليات ودقة الفواتير.",
         "asset_mgmt.feature6.title": "الأمان",
         "asset_mgmt.feature6.desc": "تحسين سلسلة العهدة وتقليل حالات السرقة أو الأصول المسروقة بتنبيهات فورية.",
-        "footer.rights": "جميع الحقوق محفوظة &copy; 2026 GulfTracking."
+        "footer.rights": "جميع الحقوق محفوظة &copy; 2026 جلف تراكينج."
     }
 };
