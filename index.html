@@ -16,6 +16,15 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -100,6 +109,7 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+    <script src="translations.js"></script>
 </head>
 
 <body class="text-gray-800">
@@ -109,23 +119,40 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <div class="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white">
-                            <i class="fas fa-location-arrow"></i>
+                    <div class="flex-shrink-0 flex items-center gap-1 md:gap-2">
+                        <div
+                            class="w-6 h-6 md:w-8 md:h-8 bg-teal-600 rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-location-arrow text-xs md:text-base"></i>
                         </div>
-                        <span class="font-bold text-2xl tracking-tight text-gray-900">GULFTRACKING</span>
+                        <span
+                            class="font-bold text-sm md:text-2xl tracking-tight text-gray-900 block">GULFTRACKING</span>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#assets" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Assets</a>
-                    <a href="#tracking"
-                        class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Tracking</a>
-                    <a href="#features"
-                        class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium">Features</a>
+                <div class="hidden md:flex space-x-8 rtl:space-x-reverse">
+                    <a href="#assets" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium"
+                        data-i18n="nav.assets">Assets</a>
+                    <a href="#tracking" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium"
+                        data-i18n="nav.tracking">Tracking</a>
+                    <a href="#features" class="text-gray-600 hover:text-teal-600 px-3 py-2 text-sm font-medium"
+                        data-i18n="nav.features">Features</a>
                 </div>
-                <div class="text-right">
-                    <div class="text-teal-700 font-bold"><i class="fas fa-user mr-2 text-teal-600"></i>Abu Nawaf</div>
-                    <span class="text-teal-700 font-bold"><i class="fas fa-phone-alt mr-2"></i>+966 59 537 6666</span>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <button id="lang-toggle" onclick="toggleLanguage()"
+                        class="text-xs md:text-sm font-bold text-teal-600 border border-teal-600 px-2 py-1 rounded hover:bg-teal-600 hover:text-white transition">
+                        العربية
+                    </button>
+                    <div class="text-right">
+                        <div
+                            class="text-teal-700 font-bold flex items-center justify-end gap-2 text-xs md:text-sm whitespace-nowrap">
+                            <i class="fas fa-user text-teal-600"></i>
+                            <span data-i18n="nav.contact_name">Abu Nawaf</span>
+                        </div>
+                        <div
+                            class="text-teal-700 font-bold flex items-center justify-end gap-2 text-xs md:text-sm whitespace-nowrap">
+                            <i class="fas fa-phone-alt"></i>
+                            <span dir="ltr">+966 59 537 6666</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,12 +162,16 @@
     <section id="assets" class="pt-16 pb-20 bg-white overflow-hidden relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-                <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5 lg:text-left z-10 relative">
-                    <p class="text-sm font-semibold text-teal-600 tracking-wide uppercase">www.gulf-tracking.com</p>
+                <div
+                    class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5 lg:text-left rtl:lg:text-right z-10 relative">
+                    <p class="text-sm font-semibold text-teal-600 tracking-wide uppercase" data-i18n="hero.subtitle">
+                        www.gulf-tracking.com</p>
                     <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                        ASSET <span class="gradient-text">MANAGEMENT</span> SYSTEM
+                        <span data-i18n="hero.title_part1">ASSET</span> <span class="gradient-text"
+                            data-i18n="hero.title_part2">MANAGEMENT</span>
+                        <span data-i18n="hero.title_part3">SYSTEM</span>
                     </h1>
-                    <p class="mt-6 text-lg text-gray-500">
+                    <p class="mt-6 text-lg text-gray-500" data-i18n="hero.description">
                         Complete visibility and control over your generators, vehicles, and heavy equipment. Track
                         utilization, running hours, and location in real-time.
                     </p>
@@ -148,17 +179,20 @@
                         <button
                             class="bg-black text-white px-6 py-2 rounded-lg flex items-center gap-3 hover:bg-gray-800 transition">
                             <i class="fab fa-apple text-2xl"></i>
-                            <div class="text-left">
-                                <div class="text-[10px] leading-none">Download on the</div>
-                                <div class="text-sm font-bold leading-none mt-1">App Store</div>
+                            <div class="text-left rtl:text-right">
+                                <div class="text-[10px] leading-none" data-i18n="hero.download_app_store">Download on
+                                    the</div>
+                                <div class="text-sm font-bold leading-none mt-1" data-i18n="hero.app_store">App Store
+                                </div>
                             </div>
                         </button>
                         <button
                             class="bg-black text-white px-6 py-2 rounded-lg flex items-center gap-3 hover:bg-gray-800 transition">
                             <i class="fab fa-google-play text-2xl"></i>
-                            <div class="text-left">
-                                <div class="text-[10px] leading-none">GET IT ON</div>
-                                <div class="text-sm font-bold leading-none mt-1">Google Play</div>
+                            <div class="text-left rtl:text-right">
+                                <div class="text-[10px] leading-none" data-i18n="hero.get_it_on">GET IT ON</div>
+                                <div class="text-sm font-bold leading-none mt-1" data-i18n="hero.google_play">Google
+                                    Play</div>
                             </div>
                         </button>
                     </div>
@@ -172,11 +206,11 @@
                             <div class="flex justify-between items-end">
                                 <div>
                                     <div class="text-4xl font-bold">98763</div>
-                                    <div class="text-sm opacity-80">Total Assets</div>
+                                    <div class="text-sm opacity-80" data-i18n="mockup.total_assets">Total Assets</div>
                                 </div>
-                                <div class="text-right">
+                                <div class="text-right rtl:text-left">
                                     <div class="text-2xl font-bold">58694</div>
-                                    <div class="text-sm opacity-80">Ignition ON</div>
+                                    <div class="text-sm opacity-80" data-i18n="mockup.ignition_on">Ignition ON</div>
                                 </div>
                             </div>
                         </div>
@@ -195,12 +229,13 @@
                                             <rect x="6" y="6" width="12" height="10" rx="1" stroke-width="1.5" />
                                         </svg>
                                     </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900">Honda EU30 Generator</h3>
+                                    <div class="flex-1 rtl:mr-4">
+                                        <h3 class="font-bold text-gray-900" data-i18n="mockup.asset1_name">Honda EU30
+                                            Generator</h3>
                                         <p class="text-xs text-gray-500">TY560820</p>
                                     </div>
-                                    <span
-                                        class="text-green-600 text-xs font-bold bg-green-100 px-2 py-1 rounded">Active</span>
+                                    <span class="text-green-600 text-xs font-bold bg-green-100 px-2 py-1 rounded"
+                                        data-i18n="mockup.active">Active</span>
                                 </div>
                                 <!-- Asset Item 2 -->
                                 <div
@@ -220,12 +255,13 @@
                                             <circle cx="12" cy="12" r="6" stroke-width="1.5" class="opacity-30" />
                                         </svg>
                                     </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900">Inverter IN568</h3>
+                                    <div class="flex-1 rtl:mr-4">
+                                        <h3 class="font-bold text-gray-900" data-i18n="mockup.asset2_name">Inverter
+                                            IN568</h3>
                                         <p class="text-xs text-gray-500">TY56B822</p>
                                     </div>
-                                    <span
-                                        class="text-yellow-600 text-xs font-bold bg-yellow-100 px-2 py-1 rounded">Idle</span>
+                                    <span class="text-yellow-600 text-xs font-bold bg-yellow-100 px-2 py-1 rounded"
+                                        data-i18n="mockup.idle">Idle</span>
                                 </div>
                                 <!-- Asset Item 3 -->
                                 <div
@@ -234,12 +270,13 @@
                                         class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center mr-4 text-gray-500">
                                         <i class="fas fa-snowflake text-2xl"></i>
                                     </div>
-                                    <div class="flex-1">
-                                        <h3 class="font-bold text-gray-900">Bajaj DC 2016 Glacier</h3>
+                                    <div class="flex-1 rtl:mr-4">
+                                        <h3 class="font-bold text-gray-900" data-i18n="mockup.asset3_name">Bajaj DC 2016
+                                            Glacier</h3>
                                         <p class="text-xs text-gray-500">TY568655</p>
                                     </div>
-                                    <span
-                                        class="text-red-600 text-xs font-bold bg-red-100 px-2 py-1 rounded">Offline</span>
+                                    <span class="text-red-600 text-xs font-bold bg-red-100 px-2 py-1 rounded"
+                                        data-i18n="mockup.offline">Offline</span>
                                 </div>
                             </div>
                         </div>
@@ -261,8 +298,10 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-10">
-                <h2 class="text-3xl font-extrabold text-white">Real-Time Desktop Monitoring</h2>
-                <p class="mt-2 text-gray-300">Comprehensive dashboard for fleet managers.</p>
+                <h2 class="text-3xl font-extrabold text-white" data-i18n="dashboard.title">Real-Time Desktop Monitoring
+                </h2>
+                <p class="mt-2 text-gray-300" data-i18n="dashboard.subtitle">Comprehensive dashboard for fleet managers.
+                </p>
             </div>
 
             <!-- Monitor CSS Mockup -->
@@ -273,8 +312,10 @@
                     <div class="flex flex-wrap items-center gap-2">
                         <span class="font-bold text-teal-700 whitespace-nowrap">GULFTRACKING</span>
                         <div class="text-xs text-gray-400">|</div>
-                        <div class="text-xs font-medium text-gray-600 whitespace-nowrap">Total Assets: 1000</div>
-                        <div class="text-xs font-medium text-green-600 whitespace-nowrap">In Use: 518</div>
+                        <div class="text-xs font-medium text-gray-600 whitespace-nowrap"
+                            data-i18n="dashboard.total_assets">Total Assets: 1000</div>
+                        <div class="text-xs font-medium text-green-600 whitespace-nowrap" data-i18n="dashboard.in_use">
+                            In Use: 518</div>
                     </div>
                     <div class="flex gap-3 text-gray-400">
                         <i class="fas fa-bell"></i>
@@ -286,7 +327,8 @@
                 <div class="flex flex-1 min-h-0">
                     <!-- Sidebar/List -->
                     <div class="w-1/4 border-r bg-white p-2 hidden md:block overflow-y-auto">
-                        <div class="bg-gray-100 p-2 rounded mb-2 text-sm font-bold text-gray-700">Equipment List</div>
+                        <div class="bg-gray-100 p-2 rounded mb-2 text-sm font-bold text-gray-700"
+                            data-i18n="dashboard.equipment_list">Equipment List</div>
                         <div class="space-y-2">
                             <div class="p-2 bg-blue-50 border border-blue-200 rounded text-xs">
                                 <div class="font-bold">Honda EU30 Generator</div>
@@ -417,88 +459,100 @@
                 <!-- Left Column -->
                 <div>
                     <h2 class="text-3xl font-extrabold text-gray-900 mb-6">
-                        THE INTELLIGENT VEHICLE<br>
-                        <span class="text-teal-600">TRACKING SOLUTION</span>
+                        <span data-i18n="tracking.title_part1">THE INTELLIGENT VEHICLE</span><br>
+                        <span class="text-teal-600" data-i18n="tracking.title_part2">TRACKING SOLUTION</span>
                     </h2>
 
                     <ul class="space-y-3 mb-10">
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">Ensure driver & fleet safety</span>
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-600" data-i18n="tracking.feature1">Ensure driver & fleet
+                                safety</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">Capture rich data on fleet management</span>
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-600" data-i18n="tracking.feature2">Capture rich data on fleet
+                                management</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">Complete vehicle diagnosis data</span>
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-600" data-i18n="tracking.feature3">Complete vehicle diagnosis
+                                data</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">Maximize operational efficiency</span>
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-600" data-i18n="tracking.feature4">Maximize operational
+                                efficiency</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3"></i>
-                            <span class="text-gray-600">Build to cut fleet operational costs</span>
+                            <i class="fas fa-check-circle text-teal-500 mt-1 mr-3 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-gray-600" data-i18n="tracking.feature5">Build to cut fleet operational
+                                costs</span>
                         </li>
                     </ul>
 
-                    <h3 class="font-bold text-xl text-gray-900 mb-6 border-b pb-2">CRITICAL ALERTS</h3>
+                    <h3 class="font-bold text-xl text-gray-900 mb-6 border-b pb-2" data-i18n="tracking.critical_alerts">
+                        CRITICAL ALERTS</h3>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex items-center gap-3 p-3 bg-red-50 rounded-lg">
-                            <i class="fas fa-car-battery text-red-500 text-xl"></i>
-                            <span class="text-sm font-medium">Battery Disconnect</span>
+                            <i class="fas fa-car-battery text-red-500 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.battery">Battery Disconnect</span>
                         </div>
                         <div class="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
-                            <i class="fas fa-tachometer-alt text-orange-500 text-xl"></i>
-                            <span class="text-sm font-medium">Over Speeding</span>
+                            <i class="fas fa-tachometer-alt text-orange-500 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.speed">Over Speeding</span>
                         </div>
                         <div class="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
-                            <i class="fas fa-clock text-yellow-500 text-xl"></i>
-                            <span class="text-sm font-medium">Continuous Idling</span>
+                            <i class="fas fa-clock text-yellow-500 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.idling">Continuous Idling</span>
                         </div>
                         <div class="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-                            <i class="fas fa-exclamation-triangle text-purple-500 text-xl"></i>
-                            <span class="text-sm font-medium">Rash Driving</span>
+                            <i class="fas fa-exclamation-triangle text-purple-500 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.rash">Rash Driving</span>
                         </div>
                         <div class="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-                            <i class="fas fa-gas-pump text-blue-500 text-xl"></i>
-                            <span class="text-sm font-medium">Fuel Sensor Issue</span>
+                            <i class="fas fa-gas-pump text-blue-500 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.fuel">Fuel Sensor Issue</span>
                         </div>
                         <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                            <i class="fas fa-car-crash text-gray-600 text-xl"></i>
-                            <span class="text-sm font-medium">Accident Alerts</span>
+                            <i class="fas fa-car-crash text-gray-600 text-xl rtl:ml-3"></i>
+                            <span class="text-sm font-medium" data-i18n="alert.accident">Accident Alerts</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column: Weight Sensor & Truck -->
                 <div class="bg-gray-50 rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 bg-teal-600 text-white rounded-bl-2xl font-bold text-sm">
+                    <div class="absolute top-0 right-0 rtl:right-auto rtl:left-0 p-4 bg-teal-600 text-white rounded-bl-2xl rtl:rounded-bl-none rtl:rounded-br-2xl font-bold text-sm"
+                        data-i18n="mockup.pta_approved">
                         PTA APPROVED
                     </div>
 
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">WEIGHT SENSOR INTEGRATION</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6" data-i18n="sensor.title">WEIGHT SENSOR INTEGRATION
+                    </h3>
 
                     <div class="grid sm:grid-cols-2 gap-6 mb-8">
                         <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Precision</h4>
-                            <p class="text-sm text-gray-600">High accuracy, repeatability, and stability with real-time
+                            <h4 class="font-bold text-gray-800 mb-2" data-i18n="sensor.precision.title">Precision</h4>
+                            <p class="text-sm text-gray-600" data-i18n="sensor.precision.desc">High accuracy,
+                                repeatability, and stability with real-time
                                 readings.</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Capability</h4>
-                            <p class="text-sm text-gray-600">Measure gross weight & payload for multiple axle readings.
+                            <h4 class="font-bold text-gray-800 mb-2" data-i18n="sensor.capability.title">Capability</h4>
+                            <p class="text-sm text-gray-600" data-i18n="sensor.capability.desc">Measure gross weight &
+                                payload for multiple axle readings.
                             </p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Cost Saving</h4>
-                            <p class="text-sm text-gray-600">Avoid fines and unnecessary stoppages.</p>
+                            <h4 class="font-bold text-gray-800 mb-2" data-i18n="sensor.cost.title">Cost Saving</h4>
+                            <p class="text-sm text-gray-600" data-i18n="sensor.cost.desc">Avoid fines and unnecessary
+                                stoppages.</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Installation</h4>
-                            <p class="text-sm text-gray-600">Flexible for air, mechanical & mixed suspensions.</p>
+                            <h4 class="font-bold text-gray-800 mb-2" data-i18n="sensor.install.title">Installation</h4>
+                            <p class="text-sm text-gray-600" data-i18n="sensor.install.desc">Flexible for air,
+                                mechanical & mixed suspensions.</p>
                         </div>
                     </div>
 
@@ -515,22 +569,25 @@
                             </div>
                             <div>
                                 <div class="font-bold text-lg">5568 VDB</div>
-                                <div class="text-xs text-gray-500">Driver: MOHAMED RISWAN</div>
-                                <div class="text-xs text-gray-500">Plate #: 4568 ADB</div>
+                                <div class="text-xs text-gray-500"><span data-i18n="truck.driver">Driver:</span> <span
+                                        data-i18n="truck.driver_name">MOHAMED RISWAN</span></div>
+                                <div class="text-xs text-gray-500"><span data-i18n="truck.plate">Plate #:</span> 4568
+                                    ADB</div>
                             </div>
                         </div>
                         <div class="flex justify-between items-center text-sm border-t pt-3">
                             <div>
-                                <span class="text-gray-500">Speed:</span>
+                                <span class="text-gray-500" data-i18n="truck.speed">Speed:</span>
                                 <span class="font-bold text-gray-800">44 Km/hr</span>
                             </div>
                             <div>
-                                <span class="text-gray-500">Load:</span>
+                                <span class="text-gray-500" data-i18n="truck.load">Load:</span>
                                 <span class="font-bold text-teal-600">20975.0</span>
                             </div>
                         </div>
                         <div class="mt-3 text-xs text-gray-400 flex justify-between">
-                            <span><i class="fab fa-whatsapp text-green-500"></i> Loc sharing available</span>
+                            <span><i class="fab fa-whatsapp text-green-500"></i> <span data-i18n="truck.loc_sharing">Loc
+                                    sharing available</span></span>
                             <span>436383.9 kms</span>
                         </div>
                     </div>
@@ -542,9 +599,10 @@
     <!-- NEW SECTION: Dustbin / Waste Management -->
     <section id="waste-mgmt" class="py-20 bg-slate-50 relative border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-left mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900">Smart Waste Management & Dustbin Tracking</h2>
-                <p class="mt-4 text-lg text-gray-500 max-w-3xl">
+            <div class="text-left rtl:text-right mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900" data-i18n="waste.title">Smart Waste Management &
+                    Dustbin Tracking</h2>
+                <p class="mt-4 text-lg text-gray-500 max-w-3xl" data-i18n="waste.description">
                     Transform municipal waste collection with our IoT-powered dustbin tracking. Reduce fuel costs and
                     carbon footprint by only collecting bins when they are full.
                 </p>
@@ -556,48 +614,48 @@
                 <div class="grid sm:grid-cols-2 gap-6">
                     <!-- Feature 1: Fill-Level Sensors (Green) -->
                     <div
-                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition h-full">
+                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition h-full text-left rtl:text-right rtl:border-l-0 rtl:border-r-4 rtl:border-r-green-500">
                         <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-signal text-green-500 text-xl"></i>
-                            <h3 class="font-bold text-gray-900">Fill-Level Sensors</h3>
+                            <i class="fas fa-signal text-green-500 text-xl rtl:ml-3"></i>
+                            <h3 class="font-bold text-gray-900" data-i18n="waste.feature1.title">Fill-Level Sensors</h3>
                         </div>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-gray-600" data-i18n="waste.feature1.desc">
                             Ultrasonic sensors provide real-time fill percentage data directly to the dashboard.
                         </p>
                     </div>
 
                     <!-- Feature 2: Route Optimization (Blue) -->
                     <div
-                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-md transition h-full">
+                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-md transition h-full text-left rtl:text-right rtl:border-l-0 rtl:border-r-4 rtl:border-r-blue-500">
                         <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-route text-blue-500 text-xl"></i>
-                            <h3 class="font-bold text-gray-900">Route Optimization</h3>
+                            <i class="fas fa-route text-blue-500 text-xl rtl:ml-3"></i>
+                            <h3 class="font-bold text-gray-900" data-i18n="waste.feature2.title">Route Optimization</h3>
                         </div>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-gray-600" data-i18n="waste.feature2.desc">
                             AI-calculated collection routes based only on bins requiring immediate attention.
                         </p>
                     </div>
 
                     <!-- Feature 3: Tilt & Fire Alerts (Orange) -->
                     <div
-                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition h-full">
+                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-500 hover:shadow-md transition h-full text-left rtl:text-right rtl:border-l-0 rtl:border-r-4 rtl:border-r-orange-500">
                         <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-fire-alt text-orange-500 text-xl"></i>
-                            <h3 class="font-bold text-gray-900">Tilt & Fire Alerts</h3>
+                            <i class="fas fa-fire-alt text-orange-500 text-xl rtl:ml-3"></i>
+                            <h3 class="font-bold text-gray-900" data-i18n="waste.feature3.title">Tilt & Fire Alerts</h3>
                         </div>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-gray-600" data-i18n="waste.feature3.desc">
                             Instant SMS/Push notifications if a bin is tipped over or detects abnormal heat levels.
                         </p>
                     </div>
 
                     <!-- Feature 4: Cleanliness Logs (Purple) -->
                     <div
-                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500 hover:shadow-md transition h-full">
+                        class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500 hover:shadow-md transition h-full text-left rtl:text-right rtl:border-l-0 rtl:border-r-purple-500">
                         <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-history text-purple-500 text-xl"></i>
-                            <h3 class="font-bold text-gray-900">Cleanliness Logs</h3>
+                            <i class="fas fa-history text-purple-500 text-xl rtl:ml-3"></i>
+                            <h3 class="font-bold text-gray-900" data-i18n="waste.feature4.title">Cleanliness Logs</h3>
                         </div>
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-gray-600" data-i18n="waste.feature4.desc">
                             Verify staff performance with timestamped collection and sanitation logs.
                         </p>
                     </div>
@@ -910,53 +968,68 @@
                 </div>
 
                 <!-- AI Features Content -->
-                <div>
-                    <h2 class="text-3xl font-extrabold mb-4">AI POWERED<br><span class="text-teal-400">PREDICTIVE
+                <div class="text-left rtl:text-right">
+                    <h2 class="text-3xl font-extrabold mb-4"><span data-i18n="ai.title_part1">AI POWERED</span><br><span
+                            class="text-teal-400" data-i18n="ai.title_part2">PREDICTIVE
                             ANALYSIS</span></h2>
-                    <p class="text-gray-400 mb-8">
+                    <p class="text-gray-400 mb-8" data-i18n="ai.description">
                         The AI usage will help to analyse the different attributes recorded using various devices for
                         productive predictions to run the system seamlessly.
                     </p>
 
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="flex gap-3">
-                            <i class="fas fa-wrench text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Service maintenance cost prediction</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-wrench text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature1">Service maintenance cost
+                                prediction</span>
                         </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-users text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Effective work distribution</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-users text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature2">Effective work
+                                distribution</span>
                         </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-route text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Track trip count & driver efficiency</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-route text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature3">Track trip count & driver
+                                efficiency</span>
                         </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-star text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Driver improvement score</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-star text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature4">Driver improvement score</span>
                         </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-leaf text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Fuel efficiency vehicle scoring</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-leaf text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature5">Fuel efficiency vehicle
+                                scoring</span>
                         </div>
-                        <div class="flex gap-3">
-                            <i class="fas fa-clipboard-check text-teal-400 mt-1"></i>
-                            <span class="text-sm text-gray-300">Dispatching efficiency appraisal</span>
+                        <div class="flex gap-3 items-center">
+                            <i class="fas fa-clipboard-check text-teal-400 rtl:ml-3 rtl:mr-0"></i>
+                            <span class="text-sm text-gray-300" data-i18n="ai.feature6">Dispatching efficiency
+                                appraisal</span>
                         </div>
                     </div>
 
-                    <div class="mt-10 pt-10 border-t border-slate-700">
-                        <h3 class="font-bold text-xl mb-6">CORE PRODUCT FEATURES</h3>
+                    <div class="mt-10 pt-10 border-t border-slate-700 text-left rtl:text-right">
+                        <h3 class="font-bold text-xl mb-6" data-i18n="core_features.title">CORE PRODUCT FEATURES</h3>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-2 text-sm text-gray-400">
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Predictive Analysis</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Live GPS Tracking</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Multi-vehicle Map</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Landmarks & Delivery</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Locations on Map</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Live Weight Sensors</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Telemetry Alerts</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Service & Maint.</div>
-                            <div><i class="fas fa-circle text-[8px] mr-2 text-teal-500"></i> Real-time Fuel</div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.1">Predictive Analysis</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.2">Live GPS Tracking</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.3">Multi-vehicle Map</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.4">Landmarks & Delivery</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.5">Locations on Map</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.6">Live Weight Sensors</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.7">Telemetry Alerts</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.8">Service & Maint.</span></div>
+                            <div><i class="fas fa-circle text-[8px] mr-2 rtl:ml-2 rtl:mr-0 text-teal-500"></i> <span
+                                    data-i18n="core_features.9">Real-time Fuel</span></div>
                         </div>
                     </div>
                 </div>
@@ -1017,72 +1090,81 @@
                     </div>
                 </div>
 
-                <h2 class="text-3xl font-extrabold text-center mb-12">ASSET MANAGEMENT SYSTEM</h2>
+                <h2 class="text-3xl font-extrabold text-center mb-12" data-i18n="asset_mgmt.title">ASSET MANAGEMENT
+                    SYSTEM</h2>
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature 1 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Live Location</h3>
-                        <p class="text-gray-400 text-sm">Real time location tracking and automatic alerts if the asset
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature1.title">Live Location</h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature1.desc">Real time location
+                            tracking and automatic alerts if the asset
                             crosses the virtually pre-defined set limit.</p>
                     </div>
 
                     <!-- Feature 2 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Service Alert</h3>
-                        <p class="text-gray-400 text-sm">Streamline maintenance tasks using automated alerts based on
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature2.title">Service Alert</h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature2.desc">Streamline maintenance
+                            tasks using automated alerts based on
                             running hours or mileage.</p>
                     </div>
 
                     <!-- Feature 3 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-red-500/20 text-red-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-red-500/20 text-red-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-lock"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Remote Immobilization</h3>
-                        <p class="text-gray-400 text-sm">Remotely immobilize your asset from anywhere, anytime to
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature3.title">Remote Immobilization
+                        </h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature3.desc">Remotely immobilize your
+                            asset from anywhere, anytime to
                             prevent unauthorized usage.</p>
                     </div>
 
                     <!-- Feature 4 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-user-shield"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Controlled Access</h3>
-                        <p class="text-gray-400 text-sm">Role based access control on the dashboard ensures data
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature4.title">Controlled Access</h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature4.desc">Role based access control
+                            on the dashboard ensures data
                             security and operational hierarchy.</p>
                     </div>
 
                     <!-- Feature 5 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-history"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Asset Work Time Log</h3>
-                        <p class="text-gray-400 text-sm">Maximize ROI by improving asset visibility and thereby
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature5.title">Asset Work Time Log
+                        </h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature5.desc">Maximize ROI by improving
+                            asset visibility and thereby
                             improving operations and billing accuracy.</p>
                     </div>
 
                     <!-- Feature 6 -->
-                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition">
+                    <div class="bg-slate-700/50 p-6 rounded-xl hover:bg-slate-700 transition text-left rtl:text-right">
                         <div
-                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4">
+                            class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-lg flex items-center justify-center text-2xl mb-4 text-center rtl:mx-auto lg:rtl:mx-0">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Security</h3>
-                        <p class="text-gray-400 text-sm">Improve the chain of custody and reduce the instance of theft
+                        <h3 class="text-xl font-bold mb-2" data-i18n="asset_mgmt.feature6.title">Security</h3>
+                        <p class="text-gray-400 text-sm" data-i18n="asset_mgmt.feature6.desc">Improve the chain of
+                            custody and reduce the instance of theft
                             or stolen assets with instant alerts.</p>
                     </div>
                 </div>
@@ -1102,13 +1184,16 @@
                     <span class="font-bold text-2xl text-gray-900 tracking-tight">GULFTRACKING</span>
                 </div>
 
-                <div class="text-center md:text-right">
+                <div class="text-center md:text-right rtl:md:text-left">
                     <a href="https://gulf-tracking.com"
                         class="block text-teal-600 font-bold hover:underline mb-1 text-lg">www.gulf-tracking.com</a>
-                    <div class="text-gray-500 font-medium"><i class="fas fa-user mr-2 text-teal-600"></i>Abu Nawaf
+                    <div class="text-gray-500 font-medium"><i
+                            class="fas fa-user mr-2 rtl:ml-2 rtl:mr-0 text-teal-600"></i><span
+                            data-i18n="nav.contact_name">Abu Nawaf</span>
                     </div>
-                    <div class="text-gray-500 font-medium"><i class="fas fa-phone-alt mr-2 text-teal-600"></i>+966 59
-                        537 6666</div>
+                    <div class="text-gray-500 font-medium"><i
+                            class="fas fa-phone-alt mr-2 rtl:ml-2 rtl:mr-0 text-teal-600"></i><span dir="ltr">+966 59
+                            537 6666</span></div>
                 </div>
             </div>
 
@@ -1133,7 +1218,7 @@
                 </div>
 
                 <!-- Center: Copyright -->
-                <div class="text-xs text-gray-400 order-3 md:order-2">
+                <div class="text-xs text-gray-400 order-3 md:order-2" data-i18n="footer.rights">
                     &copy; 2026 GulfTracking. All rights reserved.
                 </div>
 
@@ -1196,6 +1281,46 @@
 
             // Add marker to mobile map
             L.marker([38.8951, -77.0364], { icon: customIcon }).addTo(mobileMap);
+        });
+
+        // Language Switching Logic
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update toggle button text
+            const toggleBtn = document.getElementById('lang-toggle');
+            if (toggleBtn) {
+                toggleBtn.textContent = lang === 'ar' ? 'English' : 'العربية';
+            }
+        }
+
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(newLang);
+        }
+
+        // Initialize Language on Load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check localStorage or browser preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.startsWith('ar') ? 'ar' : 'en';
+            const initialLang = savedLang || browserLang;
+
+            setLanguage(initialLang);
         });
     </script>
 </body>
